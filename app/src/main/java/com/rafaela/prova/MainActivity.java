@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 int amount = Integer.parseInt(amountText);
 
                 //Cria um novo objeto e insere no banco
-                Product product = new Product(name, price);
+                Product product = new Product(name,codigo,price,amount);
                 productDao.Insert(product);
 
             // Confirma a inserção
@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Preencha os campos obrigatórios!", Toast.LENGTH_SHORT).show();
         }
     });
-
 
     }
 }
