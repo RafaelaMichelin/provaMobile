@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
         //Iniciar botões do Layout
         Button buttonSave = findViewById(R.id.buttonSave);
         Button buttonReport = findViewById(R.id.buttonReport);
+
+        //Configuração do banco de dados ROOM
+        ProductDatabase db = Room.databaseBuilder(getApplicationContext(),
+                ProductDatabase.class, "product-database").allowMainThreadQueries().build();
+        productDao = db.productDao();  //Obter a instância da DAO
 
     }
 }
