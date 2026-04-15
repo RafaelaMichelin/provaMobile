@@ -1,8 +1,10 @@
 package com.rafaela.prova;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,6 +41,45 @@ public class MainActivity extends AppCompatActivity {
         ProductDatabase db = Room.databaseBuilder(getApplicationContext(),
                 ProductDatabase.class, "product-database").allowMainThreadQueries().build();
         productDao = db.productDao();  //Obter a instância da DAO
+
+        //Configuração do Botão Salvar
+        buttonSave.setOnClickListener(v->{
+            //Confirmar click
+            Log.d("MainActivity", "Botão Cadastrar produto clicado");
+
+            //Obter valores digitados
+            String name = editTextName.getText().toString();
+            String codigo = editTextCode.getText().toString();
+            String priceText = editTextprice.getText().toString();
+            String amountText = editTextAmount.getText().toString();
+
+            //Verificar se os valores estão sendo capturados corretamente
+            Log.d("MainActivity","Nome: " +name+ ", Codigo: " +codigo+", Preço: " +priceText+", Quantidade: "+amountText);
+
+            //Verificar se campos obrigatórios foram preenchidos
+            if(!name.isEmpty() && !codigo.isEmpty() && !priceText.isEmpty() &&amountText.isEmpty()){
+                //convertendo texto para double
+                double price = Double.parseDouble(priceText);
+                //convertendo texto para int
+                int amount = Integer.parseInt(amountText);
+
+                //Cria um novo objeto e insere no banco
+                Product product = new Product(name, price);
+                productDao.Insert(product);
+
+            // Confirma a inserção
+            Log.d("MainActivity", "Produto inserido no banco de dados.");
+
+            // Exibe uma mensagem confirmando o cadastro
+            Toast.makeText(MainActivity.this, "Produto cadastrado!", Toast.LENGTH_SHORT).show();
+        } else {
+            //Mostrar erro se os campos estiverem vazio
+            Log.d("MainActivity", "Erro: Campos obrigatórios vazios!");
+            // Exibe uma mensagem de erro se os campos obrigatórios não forem preenchidos
+            Toast.makeText(MainActivity.this, "Preencha os campos obrigatórios!", Toast.LENGTH_SHORT).show();
+        }
+    });
+
 
     }
 }
