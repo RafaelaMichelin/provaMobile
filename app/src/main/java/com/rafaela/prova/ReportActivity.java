@@ -45,7 +45,7 @@ public class ReportActivity extends AppCompatActivity {
         for (Product product : productList) {
             report.append("Nome: ").append(product.getName()).append("\n")
                     .append("Código: ").append(product.getCode()).append("\n")
-                    .append("Preço: R$ ").append(product.getPrice()).append("\n") ;
+                    .append("Preço: R$ ").append(product.getPrice()).append("\n").append("------------------").append("\n") ;
         }
         //Exibe o relatório final montado na TextView da tela
         textViewReport.setText(report.toString());
