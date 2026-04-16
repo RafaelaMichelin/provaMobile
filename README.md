@@ -37,4 +37,8 @@ git clone https://github.com/RafaelaMichelin/provaMobile.git
 
 * Execute o app em um emulador ou dispositivo físico com Android 9.0 (API 28) ou superior.
 
-  ### Feito por: Rafaela Michelin
+## Demonstração da tela
+  <img width="310" height="573" alt="Captura de tela 2026-04-15 215107" src="https://github.com/user-attachments/assets/8cd7fe46-7b14-4810-997e-c0b839d4d1db" />
+
+
+### Feito por: Rafaela Michelin
