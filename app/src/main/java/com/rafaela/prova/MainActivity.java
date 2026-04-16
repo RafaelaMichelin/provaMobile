@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("MainActivity","Nome: " +name+ ", Codigo: " +codigo+", Preço: " +priceText+", Quantidade: "+amountText);
 
             //Verificar se campos obrigatórios foram preenchidos
-            if(!name.isEmpty() && !codigo.isEmpty() && !priceText.isEmpty() &&amountText.isEmpty()){
+            if(!name.isEmpty() && !codigo.isEmpty() && !priceText.isEmpty() && !amountText.isEmpty()){
                 //convertendo texto para double
                 double price = Double.parseDouble(priceText);
                 //convertendo texto para int

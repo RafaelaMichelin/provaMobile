@@ -1,5 +1,6 @@
 package com.rafaela.prova;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,12 +42,21 @@ public class ReportActivity extends AppCompatActivity {
         //Construir uma String dentro do laço de repetição
         StringBuilder report = new StringBuilder();
 
-        //Loop "for-each" para percorrer cada objeto User dentro da lista
         for (Product product : productList) {
-            report.append("Nome: ").append(product.getName()).append("\n").append("Codigo: ").append(product.getCode()).append("\n").append("Preço: ").append(product.getPrice());
+            report.append("Nome: ").append(product.getName()).append("\n")
+                    .append("Código: ").append(product.getCode()).append("\n")
+                    .append("Preço: R$ ").append(product.getPrice()).append("\n") ;
         }
         //Exibe o relatório final montado na TextView da tela
         textViewReport.setText(report.toString());
+
+    }
+
+    //Metodo para navegação entre telas
+    private void voltarParaCadastro() {
+        Intent intent = new Intent(ReportActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
 
     }
 }
